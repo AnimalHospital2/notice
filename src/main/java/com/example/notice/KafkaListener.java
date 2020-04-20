@@ -18,51 +18,54 @@ public class KafkaListener {
     @StreamListener(Processor.INPUT)
     public void onReservationReservedEvent(@Payload ReservationReserved reservationReserved) {
         if(reservationReserved.getEventType().equals("ReservationReserved")) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String json = null;
-            try {
-                json = objectMapper.writeValueAsString(new SmsMessage(reservationReserved.getPhoneNumber(),"예약 되었습니다."));
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException("JSON format exception", e);
-            }
-
-            Processor processor = NoticeApplication.applicationContext.getBean(Processor.class);
-            MessageChannel outputChannel = processor.output();
-            outputChannel.send(MessageBuilder.withPayload(json).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
+            System.out.println("예약 되었습니다.");
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            String json = null;
+//            try {
+//                json = objectMapper.writeValueAsString(new SmsMessage(reservationReserved.getPhoneNumber(),"예약 되었습니다."));
+//            } catch (JsonProcessingException e) {
+//                throw new RuntimeException("JSON format exception", e);
+//            }
+//
+//            Processor processor = NoticeApplication.applicationContext.getBean(Processor.class);
+//            MessageChannel outputChannel = processor.output();
+//            outputChannel.send(MessageBuilder.withPayload(json).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
         }
     }
 
     @StreamListener(Processor.INPUT)
     public void onReservationChangedEvent(@Payload ReservationChanged reservationChanged) {
         if(reservationChanged.getEventType().equals("ReservationChanged")) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String json = null;
-            try {
-                json = objectMapper.writeValueAsString(new SmsMessage(reservationChanged.getPhoneNumber(),"예약 변경 되었습니다.."));
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException("JSON format exception", e);
-            }
-
-            Processor processor = NoticeApplication.applicationContext.getBean(Processor.class);
-            MessageChannel outputChannel = processor.output();
-            outputChannel.send(MessageBuilder.withPayload(json).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
+            System.out.println("예약 변경 되었습니다.");
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            String json = null;
+//            try {
+//                json = objectMapper.writeValueAsString(new SmsMessage(reservationChanged.getPhoneNumber(),"예약 변경 되었습니다.."));
+//            } catch (JsonProcessingException e) {
+//                throw new RuntimeException("JSON format exception", e);
+//            }
+//
+//            Processor processor = NoticeApplication.applicationContext.getBean(Processor.class);
+//            MessageChannel outputChannel = processor.output();
+//            outputChannel.send(MessageBuilder.withPayload(json).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
         }
     }
 
     @StreamListener(Processor.INPUT)
     public void onReservationCanceledEvent(@Payload ReservationCanceled reservationCanceled) {
         if(reservationCanceled.getEventType().equals("ReservationCanceled")) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String json = null;
-            try {
-                json = objectMapper.writeValueAsString(new SmsMessage(reservationCanceled.getPhoneNumber(),"예약 취소 되었습니다.."));
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException("JSON format exception", e);
-            }
-
-            Processor processor = NoticeApplication.applicationContext.getBean(Processor.class);
-            MessageChannel outputChannel = processor.output();
-            outputChannel.send(MessageBuilder.withPayload(json).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
+            System.out.println("예약 취소 되었습니다.");
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            String json = null;
+//            try {
+//                json = objectMapper.writeValueAsString(new SmsMessage(reservationCanceled.getPhoneNumber(),"예약 취소 되었습니다.."));
+//            } catch (JsonProcessingException e) {
+//                throw new RuntimeException("JSON format exception", e);
+//            }
+//
+//            Processor processor = NoticeApplication.applicationContext.getBean(Processor.class);
+//            MessageChannel outputChannel = processor.output();
+//            outputChannel.send(MessageBuilder.withPayload(json).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
         }
     }
 }
