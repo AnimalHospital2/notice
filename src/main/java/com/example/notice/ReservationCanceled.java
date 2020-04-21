@@ -1,10 +1,7 @@
 package com.example.notice;
 
-public class ReservationCanceled {
+public class ReservationCanceled extends AbstractEvent {
     private Long id;
-
-    private String eventType;
-
 
     private String reservatorName;
 
@@ -12,7 +9,9 @@ public class ReservationCanceled {
 
     private String phoneNumber;
 
-
+    public ReservationCanceled() {
+        super();
+    }
 
     public String getEventType() {
         return eventType;

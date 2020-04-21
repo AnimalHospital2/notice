@@ -1,6 +1,6 @@
 package com.example.notice;
 
-public class ReservationChanged {
+public class ReservationChanged extends AbstractEvent {
     private Long id;
 
     private String eventType;
@@ -13,6 +13,9 @@ public class ReservationChanged {
 
     private String phoneNumber;
 
+    public ReservationChanged() {
+        super();
+    }
 
     public String getEventType() {
         return eventType;

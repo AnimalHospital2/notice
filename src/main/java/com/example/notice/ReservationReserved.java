@@ -1,6 +1,6 @@
 package com.example.notice;
 
-public class ReservationReserved {
+public class ReservationReserved extends AbstractEvent {
     private Long id;
 
     private String reservatorName;
@@ -10,6 +10,10 @@ public class ReservationReserved {
     private String phoneNumber;
 
     private String eventType;
+
+    public ReservationReserved() {
+        super();
+    }
 
     public String getEventType() {
         return eventType;
